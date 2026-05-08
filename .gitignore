@@ -1,0 +1,51 @@
+# Data and documents
+*.csv
+*.doc
+*.docx
+*.pdf
+Finalized_Plan_Parameters.csv
+Long Only Indonesia.pdf
+
+# Local test script
+test.py
+test_*.py
+tests/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Logs and local environment files
+*.log
+.env
+.env.*
+
+# IDE/editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Pickle files
+*.pkl
