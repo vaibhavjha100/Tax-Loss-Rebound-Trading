@@ -49,3 +49,17 @@ Thumbs.db
 
 # Pickle files
 *.pkl
+
+# Trained models (all file types under models/)
+models/
+*.joblib
+*.pickle
+*.pt
+*.pth
+*.h5
+*.hdf5
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+*.model
