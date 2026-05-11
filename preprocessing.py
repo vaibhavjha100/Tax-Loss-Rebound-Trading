@@ -16,9 +16,9 @@ import numpy as np
 import pandas as pd
 
 
-COMPANIES_FILE = "ohlcv_companies.csv"
-INDEX_FILE = "ohclv_index.csv"
 DATA_DIR = Path("data")
+COMPANIES_FILE = DATA_DIR / "ohlcv_companies.csv"
+INDEX_FILE = DATA_DIR / "ohclv_index.csv"
 
 FEATURE_END_MDS = [(5, 31), (6, 15), (6, 30)]
 ABNVOL_WINDOWS_MDS = [

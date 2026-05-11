@@ -1,17 +1,20 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 import yfinance as yf
 
 
-TICKERS_FILE = "asxsmallordinaries.csv"
-COMPANIES_OUTPUT_FILE = "ohlcv_companies.csv"
-INDEX_OUTPUT_FILE = "ohclv_index.csv"
+DATA_DIR = Path("data")
+TICKERS_FILE = DATA_DIR / "asxsmallordinaries.csv"
+COMPANIES_OUTPUT_FILE = DATA_DIR / "ohlcv_companies.csv"
+INDEX_OUTPUT_FILE = DATA_DIR / "ohclv_index.csv"
 INDEX_TICKER = "^AXSO"
 OHLCV_COLUMNS = ["Open", "High", "Low", "Close", "Volume"]
 
 
-def load_company_tickers(csv_path: str) -> list[str]:
+def load_company_tickers(csv_path: str | Path) -> list[str]:
     tickers_df = pd.read_csv(csv_path)
     if "Code" not in tickers_df.columns:
         raise RuntimeError("Expected 'Code' column in asxsmallordinaries.csv.")
@@ -93,6 +96,7 @@ def download_index_ohlcv(index_ticker: str) -> pd.DataFrame:
 
 
 def main() -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     tickers = load_company_tickers(TICKERS_FILE)
     companies_df = download_companies_ohlcv(tickers)
     companies_df.to_csv(COMPANIES_OUTPUT_FILE)

@@ -1,13 +1,15 @@
 import html
 import json
 import re
+from pathlib import Path
 
 import pandas as pd
 import requests
 
 
 URL = "https://www.marketindex.com.au/asx-listed-companies"
-OUTPUT_FILE = "asxsmallordinaries.csv"
+DATA_DIR = Path("data")
+OUTPUT_FILE = DATA_DIR / "asxsmallordinaries.csv"
 REQUIRED_COLUMNS = ["Code", "Company", "Sector", "Mkt Cap"]
 
 
@@ -49,6 +51,7 @@ def fetch_companies() -> pd.DataFrame:
 
 
 def main() -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     result = fetch_companies()
     result.to_csv(OUTPUT_FILE, index=False)
     print(f"Saved {len(result)} rows to {OUTPUT_FILE}")
